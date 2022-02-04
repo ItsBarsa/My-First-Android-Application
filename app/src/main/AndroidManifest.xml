@@ -13,8 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.First_android_application">
         <activity
+            android:name=".HomeActivity"
+            android:exported="true" />
+        <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">

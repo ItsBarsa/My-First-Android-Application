@@ -19,38 +19,39 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_700"
+        android:gravity="center"
         android:padding="10dp"
         android:text="Login Form"
-        android:gravity="center"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
         android:layout_margin="20dp"
         android:hint="@string/username"
-        android:layout_below="@+id/title"
-        android:inputType="text"/>
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/username"
         android:layout_margin="20dp"
         android:hint="@string/password"
-        android:layout_below="@id/username"
-        android:inputType="text"/>
+        android:inputType="textPassword" />
+
 
     <Button
         android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:layout_below="@id/password"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:text="Login" />
 
     <Button
         android:id="@+id/register"
@@ -64,18 +65,16 @@
         android:id="@+id/rememberme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember Me"
         android:layout_below="@id/login"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:text="Remember Me" />
 
-    <TextView android:id="@+id/result"
+    <TextView
+        android:id="@+id/result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rememberme"
-        android:layout_margin="20dp"/>
-
-
-
+        android:layout_margin="20dp" />
 
 
 </RelativeLayout>
