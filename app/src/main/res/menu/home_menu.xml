@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/menu1"
+        android:title="menu1"
+        android:icon="@drawable/ic_lunch"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/menu2"
+        android:title="menu2"
+        android:icon="@drawable/ic_lunch"
+        />
+
+    <item android:id="@+id/menu3"
+        android:title="menu3"
+        android:icon="@drawable/ic_lunch"/>
+
+    <item android:id="@+id/menu4"
+        android:title="menu4"
+        android:icon="@drawable/ic_lunch"/>
+
+    <item android:id="@+id/menu5"
+        android:title="menu5"
+        android:icon="@drawable/ic_lunch">
+        <menu>
+            <item android:id="@+id/submenu"
+                android:title="submenu"/>
+            <item android:id="@+id/submenu1"
+                android:title="submenu1"/>
+            <item android:id="@+id/submenu2"
+                android:title="submenu2"/>
+
+        </menu>
+
+
+    </item>
 
 </menu>
