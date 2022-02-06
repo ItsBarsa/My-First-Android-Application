@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.First_android_application">
         <activity
+            android:name=".FragmentExampleActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="true" />
         <activity

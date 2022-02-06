@@ -1,80 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="70dp"
-        android:layout_alignTop="@id/register"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_toRightOf="@id/register"
-        android:padding="20sp"
-        android:src="@mipmap/loginicon" />
-
-
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/purple_700"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Login Form"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_margin="20dp"
-        android:hint="@string/username"
-        android:inputType="text" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/username"
-        android:layout_margin="20dp"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:layout_alignTop="@id/register"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_toRightOf="@id/register"
+            android:padding="20sp"
+            android:src="@mipmap/loginicon" />
 
 
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:layout_margin="20dp"
-        android:text="Login" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/purple_700"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Login Form"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/login"
-        android:layout_toRightOf="@id/login"
-        android:text="Register" />
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_margin="20dp"
+            android:hint="@string/username"
+            android:inputType="text" />
 
-    <CheckBox
-        android:id="@+id/rememberme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/login"
-        android:layout_margin="20dp"
-        android:text="Remember Me" />
-
-    <TextView
-        android:id="@+id/result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/rememberme"
-        android:layout_margin="20dp" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username"
+            android:layout_margin="20dp"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_margin="20dp"
+            android:text="Login" />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/login"
+            android:layout_toRightOf="@id/login"
+            android:text="Register" />
+
+        <CheckBox
+            android:id="@+id/rememberme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login"
+            android:layout_margin="20dp"
+            android:text="Remember Me" />
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rememberme"
+            android:layout_margin="20dp" />
+
+
+    </RelativeLayout>
+</ScrollView>
