@@ -2,6 +2,7 @@ package com.barsha.first_android_application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,6 +17,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.barsha.first_android_application.helper.DatabaseHelper;
+
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText username, password, repassword, firstname, lastname, email;
@@ -23,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     Button register;
     TextView backtologin;
 
+    DatabaseHelper databaseHelper;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -31,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.register_layout);
 
         sharedPreferences = getSharedPreferences("userinfo", Context.MODE_PRIVATE);
-
+        databaseHelper = new DatabaseHelper(this);
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -41,17 +46,16 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         gender = findViewById(R.id.gender);
         register = findViewById(R.id.register);
-        backtologin= findViewById(R.id.backtologin);
+        backtologin = findViewById(R.id.backtologin);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if (emptyFieldValidation(username) && passwordValidation(password) && passwordValidation(repassword) && emptyFieldValidation(firstname) && emptyFieldValidation(lastname) && isvalidEmail(email)) {
-                    if(password.getText().toString().equals(repassword.getText().toString())){
+                    if (password.getText().toString().equals(repassword.getText().toString())) {
                         String usernameValue = username.getText().toString();
                         String passwordValue = password.getText().toString();
-                        String repasswordValue = repassword.getText().toString();
                         String firstnameValue = firstname.getText().toString();
                         String lastnameValue = lastname.getText().toString();
                         String emailValue = email.getText().toString();
@@ -62,12 +66,20 @@ public class RegisterActivity extends AppCompatActivity {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.putString("username", usernameValue);
                         editor.putString("password", passwordValue);
-                        editor.putString("repassword", repasswordValue);
                         editor.putString("firstname", firstnameValue);
                         editor.putString("lastname", lastnameValue);
                         editor.putString("email", emailValue);
                         editor.putString("gender", genderValue);
                         editor.commit();
+
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put("username", usernameValue);
+                        contentValues.put("password", passwordValue);
+                        contentValues.put("firstname", firstnameValue);
+                        contentValues.put("lastname", lastnameValue);
+                        contentValues.put("email", emailValue);
+                        contentValues.put("gender", genderValue);
+                        databaseHelper.insertUser(contentValues);
 
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
@@ -75,8 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         Toast.makeText(RegisterActivity.this, "user Registered", Toast.LENGTH_SHORT).show();
 
-                    }else{
-                        Toast.makeText(RegisterActivity.this, "Password doesn't match", Toast.LENGTH_SHORT ).show();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
 
                     }
 
@@ -85,8 +97,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         });
 
-        backtologin.setOnClickListener(new View.OnClickListener(){
-            public void onClick (View view){
+        backtologin.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -124,7 +136,6 @@ public class RegisterActivity extends AppCompatActivity {
             view.setError("The character must not be less than 6");
             return false;
         }
-
 
 
     }

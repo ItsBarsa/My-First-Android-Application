@@ -120,6 +120,7 @@
         android:layout_below="@id/gender"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        style="@style/btnstyle"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:gravity="center"
