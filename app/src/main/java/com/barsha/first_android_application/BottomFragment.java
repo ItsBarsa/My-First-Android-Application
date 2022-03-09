@@ -35,3 +35,5 @@ public class BottomFragment extends Fragment {
         title.setText(value);
     }
 }
+
+

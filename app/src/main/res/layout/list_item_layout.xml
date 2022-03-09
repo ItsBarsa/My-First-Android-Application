@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f1f1f1">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/username"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Username"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/password"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Password"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstname"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Firstname"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lastname"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Lastname"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Email"/>
+
+    <ImageView android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_margin="80dp"
+        android:src="@mipmap/ic_launcher"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#FFFFFF"/>
+
+</LinearLayout>

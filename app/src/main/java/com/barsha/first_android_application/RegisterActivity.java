@@ -1,17 +1,21 @@
 package com.barsha.first_android_application;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -26,6 +30,9 @@ public class RegisterActivity extends AppCompatActivity {
     RadioGroup gender;
     Button register;
     TextView backtologin;
+
+    ImageView imageView;
+
 
     DatabaseHelper databaseHelper;
     SharedPreferences sharedPreferences;
@@ -47,6 +54,16 @@ public class RegisterActivity extends AppCompatActivity {
         gender = findViewById(R.id.gender);
         register = findViewById(R.id.register);
         backtologin = findViewById(R.id.backtologin);
+        imageView = findViewById(R.id.image);
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(MediaStore. ACTION_IMAGE_CAPTURE);
+               startActivityForResult(intent,101);
+
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                         contentValues.put("lastname", lastnameValue);
                         contentValues.put("email", emailValue);
                         contentValues.put("gender", genderValue);
+                        contentValues.put("image",DatabaseHelper.getBlob(bitmap));
                         databaseHelper.insertUser(contentValues);
 
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
@@ -140,5 +158,18 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    Bitmap bitmap;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==101 &&  resultCode==RESULT_OK){
+            bitmap = (Bitmap) data.getExtras().get("data");
+            imageView.setImageBitmap(bitmap);
+
+
+
+        }
+    }
 }
 

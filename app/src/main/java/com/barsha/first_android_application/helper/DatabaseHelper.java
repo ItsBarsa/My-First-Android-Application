@@ -6,11 +6,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import com.barsha.first_android_application.helper.Userinfo;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,7 +23,7 @@ import java.util.HashMap;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String name = "FAAdb";
-    private static final int version = 1;
+    private static final int version = 2;
 
     String CreateTablesql = "CREATE TABLE IF NOT EXISTS \"user\" (\n" +
             "\t\"id\"\tINTEGER PRIMARY KEY AUTOINCREMENT, \n" +
@@ -27,8 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"firstname\"\tTEXT,\n" +
             "\t\"lastname\"\tTEXT,\n" +
             "\t\"email\"\tTEXT,\n" +
+            "\"image\"\tBLOB,\n"+
             "\t\"gender\"\tTEXT\n" +
             ")";
+
+
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, name, null, version);
@@ -56,6 +64,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.lastname = cursor.getString(cursor.getColumnIndex("lastname"));
             info.email = cursor.getString(cursor.getColumnIndex("email"));
             info.gender = cursor.getString(cursor.getColumnIndex("gender"));
+            info.image = cursor.getBlob(cursor.getColumnIndex("image"));
+
+
+
             list.add(info);
 
         }
@@ -92,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL("alter table  user add image BLOB");
 
     }
 
@@ -130,4 +143,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("password", "barsha12");
 
     }
+
+   public static byte [] getBlob (Bitmap bitmap){
+       ByteArrayOutputStream bos = new ByteArrayOutputStream();
+       bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+       byte[] bArray = bos.toByteArray();
+       return  bArray;
+   }
+
+   public static Bitmap getBitmap (byte[] byteArray) {
+        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+   }
+
 }

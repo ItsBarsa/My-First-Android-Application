@@ -113,6 +113,7 @@ public class HomeActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu4:
+                startActivity(new Intent(HomeActivity.this, UserListActivity.class));
                 showCustomToast("This is custom toast");
                 break;
 
